@@ -10,7 +10,10 @@ const routes: Routes = [
   //loadchildren: indica una ruta hija
   //()=>import:ruta de donde viene el module
   //then promesa/
-  {path:"",loadChildren:()=>import('./modules/inicio/inicio.module').then(m=>m.InicioModule)}
+  {path:"",loadChildren:()=>import('./modules/inicio/inicio.module').then(m=>m.InicioModule)},
+  {
+    path:"",loadChildren:()=>import('./modules/menu/menu.module').then(m=>m.MenuModule)
+  }
 ];
 
 @NgModule({
