@@ -9,24 +9,24 @@ import { CrudService } from 'src/app/modules/admin/services/crud.service';
   styleUrls: ['./card.component.css']
 })
 export class CardComponent {
-coleccionProducto: Producto[]=[];
+  coleccionProducto: Producto[] = [];
 
-productoSeleccionado!: Producto
+  productoSeleccionado!: Producto
 
-modalVisible: boolean=false;
+  modalVisible: boolean = false;
 
-constructor(public servicioCrud: CrudService){}
+  constructor(public servicioCrud: CrudService) { }
 
-ngOnIntit(): void{
-  this.servicioCrud.obtenerProducto().subscribe(producto => {
-    this.coleccionProducto = producto;
-  })
-}
+  ngOnInit(): void {
+    this.servicioCrud.obtenerProducto().subscribe(producto => {
+      this.coleccionProducto = producto;
+    })
+  }
 
-mostrarVer(info: Producto){
-  this.modalVisible=true;
+  mostrarVer(info: Producto) {
+    this.modalVisible = true;
 
-  this.productoSeleccionado=info
-}
+    this.productoSeleccionado = info
+  }
 
 }

@@ -2,39 +2,42 @@ import { Component } from '@angular/core';
 import { Producto } from 'src/app/models/producto';
 import { CrudService } from 'src/app/modules/admin/services/crud.service';
 
+
 @Component({
   selector: 'app-card-juguetes',
   templateUrl: './card-juguetes.component.html',
   styleUrls: ['./card-juguetes.component.css']
 })
 export class CardJuguetesComponent {
-coleccionProductos: Producto[]=[];
+  coleccionProductos: Producto[] = [];
 
-coleccionJuguetes: Producto[]=[];
+  coleccionJuguetes: Producto[] = [];
 
-productoSeleccionado!: Producto;
+  productoSeleccionado!: Producto;
 
-modalVisible: boolean=false;
+  modalVisible: boolean = false;
 
-constructor(public servicioCrud: CrudService){}
+  constructor(public servicioCrud: CrudService) { }
 
-ngOnInit(): void{
-  this.servicioCrud.obtenerProducto().subscribe(producto => {
-    this.coleccionProductos=producto;
-  })
-}
+  ngOnInit(): void {
+    this.servicioCrud.obtenerProducto().subscribe(producto => {
+      this.coleccionProductos = producto;
 
-mostrarProductoJuguetes(){
-  this.coleccionProductos.forEach(producto =>{
-    if(producto.categoria=="jueguetes"){
-      this.coleccionJuguetes.push(producto)
-    }
-  })
-}
+      this.mostrarProductoJuguetes();
+    })
+  }
 
-mostrarVer(info: Producto){
-  this.modalVisible=true;
+  mostrarProductoJuguetes() {
+    this.coleccionProductos.forEach(producto => {
+      if (producto.categoria == "Juguete") {
+        this.coleccionJuguetes.push(producto);
+      }
+    })
+  }
 
-  this.productoSeleccionado=info;
-}
+  mostrarVer(info: Producto) {
+    this.modalVisible = true;
+
+    this.productoSeleccionado = info;
+  }
 }
